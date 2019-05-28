@@ -13,15 +13,15 @@
 		},
 		PLUGINS: [
 			{
-				name: 'monaco-typescript',
+				name: '@diginet/monaco-typescript',
 				contrib: 'vs/language/typescript/monaco.contribution',
 				modulePrefix: 'vs/language/typescript',
-				thirdPartyNotices: 'node_modules/monaco-typescript/ThirdPartyNotices.txt',
+				thirdPartyNotices: 'node_modules/@diginet/monaco-typescript/ThirdPartyNotices.txt',
 				paths: {
-					src: '/monaco-typescript/release/dev',
-					'npm/dev': 'node_modules/monaco-typescript/release/dev',
-					'npm/min': 'node_modules/monaco-typescript/release/min',
-					esm: 'node_modules/monaco-typescript/release/esm',
+					src: '/@diginet/monaco-typescript/release/dev',
+					'npm/dev': 'node_modules/@diginet/monaco-typescript/release/dev',
+					'npm/min': 'node_modules/@diginet/monaco-typescript/release/min',
+					esm: 'node_modules/@diginet/monaco-typescript/release/esm',
 				}
 			},
 			{
