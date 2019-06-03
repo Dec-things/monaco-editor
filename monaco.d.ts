@@ -5622,9 +5622,7 @@ declare namespace monaco.worker {
 
 //dtsv=2
 
-
 declare namespace monaco.languages.typescript {
-
     enum ModuleKind {
         None = 0,
         CommonJS = 1,
@@ -5797,35 +5795,45 @@ declare namespace monaco.languages.typescript {
     export var getJavaScriptWorker: () => Promise<any>;
 
     export interface MultiFileProject {
-        readonly id: string
+        readonly id: string;
 
-        readonly currentFile: Uri
-        readonly extraLib: string
+        readonly currentFile: Uri;
+        readonly extraLib: string;
 
-        readonly isDisposed: boolean
+        readonly isDisposed: boolean;
+
+        onModelMarkers: IEvent<{ uri: Uri, markers: editor.IMarkerData[] }>;
 
         /**
          * Write to a file. Will create the file as well as all required directories if they don't exist.
          */
-        writeFile(uri: Uri, value: string): void
+        writeFile(uri: Uri, value: string): void;
 
         /**
          * Remove a file.
          */
-        rmFile(uri: Uri): void
+        rmFile(uri: Uri): void;
 
         /**
          * Set the current file to compile.
          */
-        setCurrentFile(uri: Uri): void
+        setCurrentFile(uri: Uri): void;
 
-        dispose(): void
+        /**
+         * Calculate the model markers for a given Uri. The markers will be emitted in the onModelMarkers event.
+         */
+        calculateModelMarkers(uri: Uri): Promise<void>;
+
+        dispose(): void;
     }
 
     /**
-     * Create a new multi-file project. This will cause the compiler to enter multi-file mode for
+     * Create a new multi-file project.
      */
-    export var createMultiFileProject: (fs: { readFile: (uri: Uri) => Promise<string>; readAllDirs: () => Promise<{ uri: Uri, value: string }[]> }) => MultiFileProject
+    export var createMultiFileProject: (fs: {
+        readFile: (uri: Uri) => Promise<string>;
+        readAllDirs: () => Promise<{ uri: Uri; value: string }[]>;
+    }) => MultiFileProject;
 }
 
 /*---------------------------------------------------------------------------------------------
