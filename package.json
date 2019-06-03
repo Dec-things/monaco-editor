@@ -1,7 +1,7 @@
 {
   "name": "@diginet/monaco-editor",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A browser based code editor",
   "author": "Microsoft Corporation",
   "license": "MIT",
